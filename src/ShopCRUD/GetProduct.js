@@ -4,22 +4,22 @@ import axios from 'axios';
   
 const apiUrl = 'http://localhost:51497/Api/Shop';  
   
-class CategoryList extends React.Component{  
+class ProductList extends React.Component{  
     constructor(props){  
         super(props);  
         this.state = {  
            error:null,  
-           categories:[],  
+           product:[],  
            response: {}  
               
         }  
     }  
   
     componentDidMount(){  
-       axios.get(apiUrl + '/GetCategory').then(response => response.data).then(  
+       axios.get(apiUrl + '/GetProduct').then(response => response.data).then(  
             (result)=>{  
                 this.setState({  
-                  categories:result  
+                  product:result  
                 });  
             },  
             (error)=>{  
@@ -29,19 +29,19 @@ class CategoryList extends React.Component{
     }  
   
       
-    deleteCategory(C_Id) {  
-      const { categories } = this.state;     
-     axios.delete(apiUrl + '/DeleteCategoryDetails/' + C_Id).then(result=>{  
+    deleteProduct(P_Id) {  
+      const { product } = this.state;     
+     axios.delete(apiUrl + '/DeleteProductDetails/' + P_Id).then(result=>{  
        alert(result.data);  
         this.setState({  
           response:result,  
-          categories:categories.filter(category=>category.C_Id !== C_Id)  
+          product:product.filter(product=>product.P_Id !== P_Id)  
         });  
       });  
     }  
   
     render(){         
-        const{error,categories}=this.state;  
+        const{error,product}=this.state;  
         if(error){  
             return(  
                 <div>Error:{error.message}</div>  
@@ -55,24 +55,24 @@ class CategoryList extends React.Component{
                   <Table>  
                     <thead className="btn-primary">  
                       <tr> 
-                      <th>Category ID</th> 
-                        <th>Category Name</th>  
-                        <th>Category Description</th> 
+                      <th>Product ID</th> 
+                        <th>Product Name</th>  
+                        <th>Product Description</th> 
                         <th>Is Active</th>
                         <th>Action</th> 
                          
                       </tr>  
                     </thead>  
                     <tbody>  
-                      {categories.map(category => (  
-                        <tr key={category.C_Id}>
-                        <td>{category.C_Id}</td> 
-                        <td>{category.C_Name}</td>  
-                          <td>{category.C_Description}</td> 
-                          <td>{category.C_Active}</td>                          
+                      {product.map(product => (  
+                        <tr key={product.P_Id}>
+                        <td>{product.P_Id}</td> 
+                        <td>{product.P_Name}</td>  
+                          <td>{product.P_Description}</td> 
+                          <td>{product.P_Active}</td>                          
                            
-                          <td><Button variant="info" onClick={() => this.props.editCategory(category.C_Id)}>Edit</Button>       
-                          <Button variant="danger" onClick={() => this.deleteCategory(category.C_Id)}>Delete</Button>  
+                          <td><Button variant="info" onClick={() => this.props.editProduct(product.C_Id)}>Edit</Button>       
+                          <Button variant="danger" onClick={() => this.deleteProduct(product.C_Id)}>Delete</Button>  
                           
                           </td>  
                         </tr>  
@@ -85,4 +85,4 @@ class CategoryList extends React.Component{
     }  
 }  
   
-export default CategoryList; 
+export default ProductList; 

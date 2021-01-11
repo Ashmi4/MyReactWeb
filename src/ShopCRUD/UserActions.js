@@ -4,7 +4,7 @@ import { Container, Button } from 'react-bootstrap';
 import CategoryList from './GetCategory';  
 import AddCategory from './AddCategory';  
 import axios from 'axios';  
-const apiUrl = 'http://localhost:60350/Api/Shop/';  
+const apiUrl = 'http://localhost:51497/Api/Shop/';  
   
 class UserActionApp extends Component {  
   constructor(props) {  
@@ -87,7 +87,8 @@ class UserActionApp extends Component {
     return (  
       <div className="App">  
  <Container>  
-        <h1 style={{ textAlign: 'center' }}>ASP.NET/React/SQL</h1>  
+        <h1 style={{ textAlign: 'center' }}>ASP.NET/React/SQL</h1>
+        <div id='hello'></div>
         <hr></hr>  
         {!this.state.isCategoryDetails && <Button variant="primary" onClick={() => this.onDetails()}> Category Details</Button>}  
         {!this.state.isAddCategory && <Button variant="primary" onClick={() => this.onCreate()}>Add Category</Button>}  
