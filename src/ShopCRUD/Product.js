@@ -58,10 +58,10 @@ class Product extends Component {
     
   }  
   
-  editProduct = C_Id => {  
+  editProduct = P_Id => {  
   
     this.setState({ isProductDetails: false });  
-   axios.get(apiUrl + "GetProductDetailsById/" + C_Id).then(result => {  
+   axios.get(apiUrl + "GetProductDetailsById/" + P_Id).then(result => {  
   
         this.setState({  
           isEditproduct: true,  

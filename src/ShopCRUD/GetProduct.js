@@ -56,7 +56,8 @@ class ProductList extends React.Component{
                     <thead className="btn-primary">  
                       <tr> 
                       <th>Product ID</th> 
-                        <th>Product Name</th>  
+                        <th>Product Name</th> 
+                        <th>Product Cost</th> 
                         <th>Product Description</th> 
                         <th>Is Active</th>
                         <th>Action</th> 
@@ -68,11 +69,12 @@ class ProductList extends React.Component{
                         <tr key={product.P_Id}>
                         <td>{product.P_Id}</td> 
                         <td>{product.P_Name}</td>  
+                        <td>{product.P_Cost}</td>
                           <td>{product.P_Description}</td> 
                           <td>{product.P_Active}</td>                          
                            
-                          <td><Button variant="info" onClick={() => this.props.editProduct(product.C_Id)}>Edit</Button>       
-                          <Button variant="danger" onClick={() => this.deleteProduct(product.C_Id)}>Delete</Button>  
+                          <td><Button variant="info" onClick={() => this.props.editProduct(product.P_Id)}>Edit</Button>       
+                          <Button variant="danger" onClick={() => this.deleteProduct(product.P_Id)}>Delete</Button>  
                           
                           </td>  
                         </tr>  

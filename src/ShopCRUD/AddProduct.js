@@ -9,10 +9,11 @@ class AddProduct extends React.Component {
       P_Id: '',  
       P_Name: '',  
       P_Description: '',  
-      P_Active: '',       
+      P_Active: '',
+      C_Id: '',       
     }  
   
-    if (props.product.C_Id) {  
+    if (props.product.P_Id) {  
       this.state = props.product  
     } else {  
       this.state = this.initialState;  
@@ -65,6 +66,15 @@ class AddProduct extends React.Component {
                   onChange={this.handleChange}  
                   placeholder="Product Name" />  
               </Form.Group>  
+              <Form.Group controlId="P_Cost">  
+                <Form.Label>Product Cost</Form.Label>  
+                <Form.Control  
+                  type="text"  
+                  name="P_Cost"  
+                  value={this.state.P_Cost}  
+                  onChange={this.handleChange}  
+                  placeholder="Product Cost" />  
+              </Form.Group>
               <Form.Group controlId="P_Description">  
                 <Form.Label>Product Description</Form.Label>  
                 <Form.Control  
@@ -83,7 +93,15 @@ class AddProduct extends React.Component {
                   onChange={this.handleChange}  
                   placeholder="Product Active" />  
               </Form.Group>  
-              
+              <Form.Group controlId="C_Id">  
+                <Form.Label>Category Name</Form.Label>  
+                <Form.Control  
+                  type="text"  
+                  name="C_Id"  
+                  value={this.state.C_Id}  
+                  onChange={this.handleChange}  
+                  placeholder="Category Name" />  
+              </Form.Group>  
               <Form.Group>  
                 <Form.Control type="hidden" name="P_Id" value={this.state.P_Id} />  
                 <Button variant="success" type="submit">{actionStatus}</Button>            
